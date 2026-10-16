@@ -17,7 +17,7 @@
 //! use serde_json::json;
 //!
 //! let req = request();
-//! if req.path != "/visits" { status(404); println!("{{\"error\":\"not found\"}}"); return; }
+//! if req.path != "/visits" { status(404); println!("{{\"error\":\"not found\"}}"); return Ok(()); }
 //! execute("create table if not exists visits (who text, at timestamptz default now())", &[])?;
 //! execute("insert into visits (who) values ($1)", &[json!(req.query_param("who").unwrap_or_default())])?;
 //! let rows = query("select count(*)::int as n from visits", &[])?;
